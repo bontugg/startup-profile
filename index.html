@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GulitNet</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://js.puter.com/v2/"></script>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>GulitNet</h1>
+        <p>Affordable groceries. Delivered smart.</p>
+        <a href="#start" class="cta-button">Get Started</a>
+      </div>
+    </section>
+    <section class="about-section">
+      <div class="about-text">
+        <h2>Who We Are</h2>
+        <p>
+          To empower every Ethiopian with affordable, accessible, and
+          transparent grocery shopping through direct sourcing and digital
+          innovation. We envision a future where every household in
+          Ethiopia-regardless of income -has access to reliable, affordable
+          groceries delivered through smart technology. GulitNet aims to be the
+          trusted bridge between farmers and families across the nation.
+        </p>
+      </div>
+      <div class="about-image">
+        <img src="images/basket.jpg" />
+      </div>
+    </section>
+    <section class="offer-section">
+      <h2>What We Offer</h2>
+      <div class="carousel-container">
+        <button class="scroll-btn left" onclick="scrollCarousel(-1)">
+          &#10094;
+        </button>
+
+        <div class="carousel-wrapper">
+          <div class="carousel" id="carousel">
+            <div class="card">
+              <h3>📱GulitNet App</h3>
+              <p><strong>Feature:</strong> Direct Sourcing</p>
+              <p><strong>Tool/Method:</strong> Mobile Ordering</p>
+              <p>
+                <strong>Impact Statement:</strong> "Browse and order fresh
+                groceries from your phone. Skip the market lines.
+              </p>
+            </div>
+            <div class="card">
+              <h3>🚚Delivery Network</h3>
+              <p><strong>Featre:</strong> Real-Time Tracking</p>
+              <p><strong>Tool/Method:</strong> Route Optimization</p>
+              <p>
+                <strong>Impact Statement:</strong> "Your groceries arrive on
+                time-tracked from our hubs to your doorsteps"
+              </p>
+            </div>
+            <div class="card">
+              <h3>🛍Vendor Platform</h3>
+              <p><strong>Feature:</strong> Local Business Empowerment</p>
+              <p><strong>Tool/Method:</strong> Inventory Tools</p>
+              <p>
+                <strong>Impact Statement:</strong> "We help small vendors reach
+                more customers and manage stock with ease.
+              </p>
+            </div>
+          </div>
+        </div>
+        <button class="scroll-btn right" onclick="scrollCarousel(1)">
+          &#10095;
+        </button>
+      </div>
+    </section>
+    <section class="testimonial-section">
+      <h2 class="testimonial-title">What Our Users Say</h2>
+      <div class="testimonial-cards">
+        <div class="testimonial-card">
+          <p class="testimonial-text">"GulitNet saves me time and money."</p>
+          <p class="testimonial-user">— Ruth M., University Student</p>
+          <div class="stars">★ ★ ★ ★ ★</div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            "Our cafe now runs smoother than ever. We order in bulk, get great
+            prices, and don't worry about supplies."
+          </p>
+          <p class="testimonial-user">— Samuel Tadesse, Small Business Owner</p>
+          <div class="stars">★ ★ ★ ★ ★</div>
+        </div>
+      </div>
+    </section>
+    <div class="brand-bar">
+      <div class="brand-value">Affordable</div>
+      <div class="brand-value">Transparent</div>
+      <div class="brand-value">Community-Driven</div>
+    </div>
+
+    <section class="team-section">
+      <h2>Meet the Team</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="images/GulitNet-Bontu.jpg" />
+          <h3>Bontu Duguma</h3>
+          <p class="role">Chief Executive Officer</p>
+          <p class="bio">
+            Directs overall business vision, strategy, and growth
+          </p>
+        </div>
+
+        <div class="team-card">
+          <img src="images/GulitNet-Nuhamin.jpg" />
+          <h3>Nuhamin Wendwossen</h3>
+          <p class="role">Chief Marketing Officer</p>
+          <p class="bio">
+            Leads brand strategy, digital campaigns, and outreach
+          </p>
+        </div>
+
+        <div class="team-card">
+          <img src="images/GulitNet-Yohanna.jpg" />
+          <h3>Yohanna Moges</h3>
+          <p class="role">Chief Products Officer</p>
+          <p class="bio">Leads app development and user experience</p>
+        </div>
+      </div>
+    </section>
+    <section class="chatbot-section">
+      <h2>Ask GulitBot 🤖</h2>
+      <p class="chat-instructions">
+        Ask our AI about our mission, services, or how you can get involved.
+      </p>
+      <div class="chatbot-box">
+        <div id="chatDisplay"></div>
+        <div class="chat-input-area">
+          <input
+            type="text"
+            id="userInput"
+            placeholder="Type your message..."
+          />
+          <button onclick="sendMessage()">📤</button>
+        </div>
+      </div>
+      <div class="sample-questions">
+        <p>Try asking:</p>
+        <button onclick="sendSample('Who founded GulitNet?')">
+          Who founded GulitNet?
+        </button>
+        <button onclick="sendSample('What problem does GulitNet solve?')">
+          What problem does GulitNet solve?
+        </button>
+        <button onclick="sendSample('What services do you offer?')">
+          What services do you offer?
+        </button>
+        <button onclick="sendSample('How can I support the team?')">
+          How can I support the team?
+        </button>
+        <button onclick="sendSample('What is your long-term goal?')">
+          What is your long-term goal?
+        </button>
+      </div>
+    </section>
+
+    <div class="theme-toggle">
+      <label>
+        <input type="checkbox" id="themeSwitch" />
+        Dark Mode
+      </label>
+    </div>
+
+    <div class="contact-container">
+      <form id="contactForm">
+        <h2>Contact Us</h2>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send</button>
+      </form>
+    </div>
+
+    <footer class="footer">
+      <div id="visitorCount">Visitors: 0</div>
+      <div>
+        <a href="mailto:guilhot@getbismail.com">Email</a>
+        <a href="https://www.linkedin.com/in/YOUR_PROFILE" target="_blank"
+          >LinkedIn</a
+        >
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
