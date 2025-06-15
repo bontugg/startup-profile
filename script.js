@@ -7,7 +7,7 @@ function scrollCarousel(direction) {
   const cards = carousel.querySelectorAll(".card");
   if (cards.length === 0) return;
 
-  const cardWidth = cards[0].offsetWidth + 20; // card width + margin
+  const cardWidth = cards[0].offsetWidth + 20;
   const totalCards = cards.length;
 
   currentIndex += direction;
@@ -21,12 +21,11 @@ function scrollCarousel(direction) {
 
 document.addEventListener("DOMContentLoaded", () => {
   const visitorKey = "visitCount";
-  let count = parseInt(localStorage.getItem(visitorKey)) || 0; // FIXED: added ||
+  let count = parseInt(localStorage.getItem(visitorKey)) || 0;
   count++;
   localStorage.setItem(visitorKey, count);
-
   const visitorDisplay = document.getElementById("visitorCount");
-  if (visitorDisplay) visitorDisplay.innerText = count;
+  if (visitorDisplay) visitorDisplay.innerText = `Visitors: ${count}`;
 
   const contactForm = document.getElementById("contactForm");
   if (contactForm) {
@@ -37,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const email = this.querySelector('input[name="email"]');
       const message = this.querySelector('textarea[name="message"]');
 
-      // FIXED: added && between conditions
       if (!name.value || !email.value || !message.value) {
         alert("Please fill in all fields.");
         return;
@@ -55,28 +53,65 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const themeKey = "siteTheme";
-  const themeToggleBtn = document.getElementById("themeToggle");
+  const themeSwitch = document.getElementById("themeSwitch");
 
   function applyTheme(theme) {
     document.body.classList.toggle("dark-mode", theme === "dark");
-    if (themeToggleBtn) {
-      themeToggleBtn.textContent =
-        theme === "dark" ? "Light Mode" : "Dark Mode";
-      themeToggleBtn.setAttribute("aria-pressed", theme === "dark");
-    }
+    if (themeSwitch) themeSwitch.checked = theme === "dark";
   }
 
-  // FIXED: added || operator
   const savedTheme = localStorage.getItem(themeKey) || "light";
   applyTheme(savedTheme);
 
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener("click", () => {
-      const newTheme = document.body.classList.contains("dark-mode")
-        ? "light"
-        : "dark";
+  if (themeSwitch) {
+    themeSwitch.addEventListener("change", () => {
+      const newTheme = themeSwitch.checked ? "dark" : "light";
       localStorage.setItem(themeKey, newTheme);
       applyTheme(newTheme);
     });
   }
 });
+
+function sendMessage() {
+  const userInput = document.getElementById("userInput");
+  const chatDisplay = document.getElementById("chatDisplay");
+
+  const message = userInput.value.trim();
+  if (!message) return;
+
+  const userMessage = document.createElement("div");
+  userMessage.className = "chat-message user";
+  userMessage.textContent = "🧑: " + message;
+  chatDisplay.appendChild(userMessage);
+
+  const botReply = document.createElement("div");
+  botReply.className = "chat-message bot";
+  botReply.textContent = "🤖: " + getBotReply(message);
+  chatDisplay.appendChild(botReply);
+
+  userInput.value = "";
+  chatDisplay.scrollTop = chatDisplay.scrollHeight;
+}
+
+function sendSample(text) {
+  const input = document.getElementById("userInput");
+  input.value = text;
+  sendMessage();
+}
+
+function getBotReply(message) {
+  const msg = message.toLowerCase();
+
+  if (msg.includes("founded"))
+    return "GulitNet was founded by Bontu Duguma and her team.";
+  if (msg.includes("problem"))
+    return "GulitNet solves grocery access and affordability in Ethiopia.";
+  if (msg.includes("services"))
+    return "We offer an app, delivery service, and vendor tools.";
+  if (msg.includes("support"))
+    return "You can support us by spreading the word or partnering.";
+  if (msg.includes("goal"))
+    return "Our goal is to transform grocery delivery across Ethiopia.";
+
+  return "Sorry, I don't understand that yet, but I'm learning!";
+}
